@@ -1,40 +1,47 @@
 
 const Skills = () => {
+  // Add the animation keyframes
+  const animationStyle = `
+    @keyframes fillBar {
+      from { width: 0; }
+      to { width: var(--skill-level); }
+    }
+  `;
   const skillCategories = [
     {
       title: "Frontend",
       skills: [
-        { name: "React", level: 95 },
-        { name: "TypeScript", level: 90 },
-        { name: "Tailwind CSS", level: 92 },
-        { name: "Vue.js", level: 85 },
-        { name: "JavaScript", level: 95 }
+        { name: "HTML", level:85 },
+        { name: "CSS", level: 75 },
+        { name: "JavaScript", level: 85 },
+        { name: "React", level: 70 },
+        { name: "TypeScript", level: 65 },
+        { name: "Tailwind CSS", level: 50 },
+        { name: "Vite", level: 50 },
       ]
     },
     {
       title: "Backend",
       skills: [
-        { name: "Node.js", level: 88 },
-        { name: "Python", level: 82 },
-        { name: "PostgreSQL", level: 85 },
-        { name: "MongoDB", level: 80 },
-        { name: "GraphQL", level: 78 }
+        { name: "Node.js", level: 89 },
+        { name: "Express", level: 89 },
+        { name: "MongoDB", level: 75 },
+        { name: "Mongoose", level: 75 }
       ]
     },
     {
       title: "Tools & Others",
       skills: [
-        { name: "Git", level: 92 },
-        { name: "Docker", level: 75 },
-        { name: "AWS", level: 70 },
-        { name: "Figma", level: 88 },
-        { name: "Testing", level: 85 }
-      ]
+        { name: "Git", level: 90 },
+        { name: "Github", level: 85 },
+       ]
     }
   ];
 
   return (
-    <section id="skills" className="py-20 bg-slate-800">
+    <>
+      <style>{animationStyle}</style>
+      <section id="skills" className="py-20 bg-slate-800">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
@@ -64,9 +71,10 @@ const Skills = () => {
                       <div 
                         className="h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full transition-all duration-1000 ease-out group-hover:animate-pulse"
                         style={{ 
+                          '--skill-level': `${skill.level}%`,
                           width: `${skill.level}%`,
-                          animation: `fillBar 2s ease-out ${skillIndex * 0.1}s both`
-                        }}
+                          animation: `fillBar 1s ease-out ${skillIndex * 0.1}s both`
+                        } as React.CSSProperties}
                       ></div>
                     </div>
                   </div>
@@ -85,8 +93,9 @@ const Skills = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+      </section>
+    </>
+ );
 };
 
 export default Skills;

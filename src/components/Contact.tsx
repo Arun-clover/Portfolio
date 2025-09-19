@@ -35,20 +35,20 @@ const Contact = () => {
     {
       icon: <Mail className="w-6 h-6" />,
       title: "Email",
-      detail: "john.doe@example.com",
-      href: "mailto:john.doe@example.com"
+      detail: "arunkumarkarna.2104@gmail.com",
+      href: "mailto:arunkumarkarna.2104@gmail.com"
     },
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Phone",
-      detail: "+1 (555) 123-4567",
-      href: "tel:+15551234567"
+      detail: "91+ 7010102084",
+      href: "tel:7010102084"
     },
     {
       icon: <MapPin className="w-6 h-6" />,
       title: "Location",
-      detail: "New York, NY",
-      href: "#"
+      detail: "Chennai, Tamil Nadu, India",
+      href: "https://www.google.com/maps/place/Chennai"
     }
   ];
 

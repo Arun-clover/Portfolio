@@ -19,18 +19,9 @@ const Projects = () => {
       title: "Portfolio Website",
       description: "A responsive portfolio website showcasing modern web development techniques with smooth animations and optimized performance.",
       image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800",
-      technologies: ["React", "Tailwind CSS", "Vite"],
-      liveUrl: "#",
+      technologies: ["React", "Tailwind CSS", "Vite"],    
       githubUrl: "https://github.com/Arun-clover/Portfolio.git"
     },
-    {
-      title: "Weather Dashboard",
-      description: "A beautiful weather application with location-based forecasts, interactive charts, and detailed weather analytics.",
-      image: "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=800",
-      technologies: ["Vue.js", "Chart.js", "OpenWeather API", "CSS3"],
-      liveUrl: "#",
-      githubUrl: "#"
-    }
   ];
 
   return (

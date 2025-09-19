@@ -1,4 +1,5 @@
-import { Heart, Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
+import { Heart,Linkedin, Mail, ArrowUp } from 'lucide-react';
+import { FaGithub } from 'react-icons/fa';
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -20,19 +21,19 @@ const Footer = () => {
           
           <div className="flex items-center space-x-6">
             <a
-              href="#"
+              href="https://github.com/Arun-clover"
               className="p-2 text-slate-400 hover:text-white transition-colors duration-300 transform hover:scale-110"
             >
-              <Github className="w-5 h-5" />
+              <FaGithub className="w-5 h-5" />
             </a>
             <a
-              href="#"
+              href="https://www.linkedin.com/in/arun-kumar-k-284528274/"
               className="p-2 text-slate-400 hover:text-white transition-colors duration-300 transform hover:scale-110"
             >
               <Linkedin className="w-5 h-5" />
             </a>
             <a
-              href="#"
+              href="mailto:arunkumarkarna.2104@gmail.com"
               className="p-2 text-slate-400 hover:text-white transition-colors duration-300 transform hover:scale-110"
             >
               <Mail className="w-5 h-5" />
