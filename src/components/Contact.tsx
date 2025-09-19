@@ -8,6 +8,10 @@ const Contact = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    success: boolean;
+    message: string;
+  } | null>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -19,16 +23,39 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    // Reset form
-    setFormData({ name: '', email: '', message: '' });
-    setIsSubmitting(false);
-    
-    // You would typically send the data to your backend here
-    alert('Thank you for your message! I\'ll get back to you soon.');
+    setSubmitStatus(null);
+
+    try {
+      const form = e.target as HTMLFormElement;
+      const formDataObj = new FormData(form);
+      
+      // Add form-name for Netlify
+      formDataObj.append('form-name', 'contact');
+
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formDataObj as any).toString()
+      });
+
+      if (response.ok) {
+        setFormData({ name: '', email: '', message: '' });
+        setSubmitStatus({
+          success: true,
+          message: 'Thank you for your message! I will get back to you soon.'
+        });
+      } else {
+        throw new Error('Network response was not ok');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus({
+        success: false,
+        message: 'There was an error sending your message. Please try again later.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -97,7 +124,8 @@ const Contact = () => {
 
           {/* Contact Form */}
           <div className="bg-slate-800 p-8 rounded-2xl border border-slate-700">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form name="contact" method='POST' data-netlify="true" onSubmit={handleSubmit} className="space-y-6">
+              <input type="hidden" name="form-name" value="contact" />
               <div>
                 <label htmlFor="name" className="block text-white font-semibold mb-2">
                   Name
@@ -163,6 +191,16 @@ const Contact = () => {
                   </>
                 )}
               </button>
+
+              {submitStatus && (
+                <div className={`mt-4 p-4 rounded-md ${
+                  submitStatus.success 
+                    ? 'bg-green-900/30 text-green-400 border border-green-800' 
+                    : 'bg-red-900/30 text-red-400 border border-red-800'
+                }`}>
+                  {submitStatus.message}
+                </div>
+              )}
             </form>
           </div>
         </div>
