@@ -12,10 +12,13 @@ export const sendEmail = async (formData: {
   try {
     const templateParams = {
       from_name: formData.name,
-      from_email: formData.email,
+      from_email: 'noreply@yourdomain.com', // This will be your EmailJS sender email
       to_name: 'Arun Kumar',
-      message: formData.message,
+      message: `From: ${formData.name} -${formData.email} to Arun kumar K
+
+${formData.message}`,
       reply_to: formData.email,
+      user_email: formData.email, // Add this line if you want to use it in your template
     };
 
     const response = await emailjs.send(
