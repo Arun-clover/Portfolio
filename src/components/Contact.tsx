@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import { sendEmail } from '../services/emailService';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -26,26 +27,18 @@ const Contact = () => {
     setSubmitStatus(null);
 
     try {
-      const form = e.target as HTMLFormElement;
-      const formDataObj = new FormData(form);
+      // Send email using EmailJS
+      const emailResponse = await sendEmail(formData);
       
-      // Add form-name for Netlify
-      formDataObj.append('form-name', 'contact');
-
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formDataObj as any).toString()
-      });
-
-      if (response.ok) {
+      if (emailResponse.success) {
+        // Reset form on success
         setFormData({ name: '', email: '', message: '' });
         setSubmitStatus({
           success: true,
           message: 'Thank you for your message! I will get back to you soon.'
         });
       } else {
-        throw new Error('Network response was not ok');
+        throw new Error('Failed to send email');
       }
     } catch (error) {
       console.error('Form submission error:', error);
@@ -124,8 +117,7 @@ const Contact = () => {
 
           {/* Contact Form */}
           <div className="bg-slate-800 p-8 rounded-2xl border border-slate-700">
-            <form name="contact" method='POST' data-netlify="true" onSubmit={handleSubmit} className="space-y-6">
-              <input type="hidden" name="form-name" value="contact" />
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-white font-semibold mb-2">
                   Name
@@ -177,7 +169,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-105 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center space-x-2"
+                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold py-3 px-6 rounded-lg hover:opacity-90 transition-all disabled:opacity-50"
               >
                 {isSubmitting ? (
                   <>

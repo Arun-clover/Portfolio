@@ -1,24 +1,29 @@
 import { FaGithub } from 'react-icons/fa';
+import dashboardImg from '../img/dashboard.jpg';
+import todoImg from '../img/task.jpg';
+import portfolioImg from '../img/portfolio.jpg';
+
+
 const Projects = () => {
   const projects = [
     {
       title: "React-Dashboard Aunthentication",
       description: "A full-stack Dashboard Authentication solution with React, Node.js, and MongoDB. Features include user authentication, payment processing, and admin dashboard.",
-      image: "https://t4.ftcdn.net/jpg/01/19/11/55/360_F_119115529_mEnw3lGpLdlDkfLgRcVSbFRuVl6sMDty.jpg",
+      image: dashboardImg,
       technologies: ["React", "Node.js", "MongoDB", "Express"],
       githubUrl: "https://github.com/Arun-clover/RLPP.git"
     },
     {
       title: "Todo Task Management App",
       description: "A simple Todo application enabling users to Create, Read, Update, and Delete tasks with intuitive interface and persistent storage support.",
-      image: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: todoImg,
       technologies: ["React", "Node.js", "MongoDB", "Express"],
       githubUrl: "https://github.com/Arun-clover/TODO-RA.git"
     },
     {
       title: "Portfolio Website",
       description: "A responsive portfolio website showcasing modern web development techniques with smooth animations and optimized performance.",
-      image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: portfolioImg,
       technologies: ["React", "Tailwind CSS", "Vite"],    
       githubUrl: "https://github.com/Arun-clover/Portfolio.git"
     },
