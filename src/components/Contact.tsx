@@ -118,6 +118,15 @@ const Contact = () => {
           {/* Contact Form */}
           <div className="bg-slate-800 p-8 rounded-2xl border border-slate-700">
             <form onSubmit={handleSubmit} className="space-y-6">
+            {submitStatus && (
+                <div className={`mt-4 p-4 rounded-md ${
+                  submitStatus.success 
+                    ? 'bg-green-900/30 text-green-400 border border-green-800' 
+                    : 'bg-red-900/30 text-red-400 border border-red-800'
+                }`}>
+                  {submitStatus.message}
+                </div>
+              )}
               <div>
                 <label htmlFor="name" className="block text-white font-semibold mb-2">
                   Name
@@ -184,15 +193,7 @@ const Contact = () => {
                 )}
               </button>
 
-              {submitStatus && (
-                <div className={`mt-4 p-4 rounded-md ${
-                  submitStatus.success 
-                    ? 'bg-green-900/30 text-green-400 border border-green-800' 
-                    : 'bg-red-900/30 text-red-400 border border-red-800'
-                }`}>
-                  {submitStatus.message}
-                </div>
-              )}
+             
             </form>
           </div>
         </div>
