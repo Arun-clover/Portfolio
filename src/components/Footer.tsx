@@ -43,7 +43,7 @@ const Footer = () => {
         
         <div className="mt-8 pt-8 border-t border-slate-700 flex flex-col md:flex-row justify-between items-center">
           <p className="text-slate-400 text-sm mb-4 md:mb-0 flex items-center">
-            Made with <Heart className="w-4 h-4 text-red-500 mx-1" /> by John Doe
+            Made with <Heart className="w-4 h-4 text-red-500 mx-1" /> by Arun kumar 
           </p>
           
           <button
