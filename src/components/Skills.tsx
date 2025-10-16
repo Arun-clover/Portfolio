@@ -34,6 +34,9 @@ const Skills = () => {
       skills: [
         { name: "Git", level: 90 },
         { name: "Github", level: 85 },
+        {name:"Postman",level:70},
+        {name:"Thunder Client",level:70},
+
        ]
     }
   ];
